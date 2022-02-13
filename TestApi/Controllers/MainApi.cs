@@ -11,57 +11,43 @@ namespace TestApi.Controllers
     {
 
         [HttpPost(Name = "GetWeatherForecast")]
-        public ActionResult<List<string>> IntListWork(List<int> parentList)
+        public ActionResult<List<NumList>> Post([FromBody] List<NumList> input)
         {
-            List<string> slist = new List<string>();
-            List<int> childList = new List<int>();
 
-            int counter = 0;
-            double standev = 0.0f;
-
-            parentList.Sort();
-
-
-            foreach (int i in parentList)
+            foreach (NumList nums in input)
             {
-                int number = parentList.ElementAt(counter);
-                childList.Add(number);
-                
-                // Call standard deviation function for current childList
-                standev = standardDeviation(childList);
-               
+                System.Console.WriteLine(nums.First);
+                System.Console.WriteLine(nums.Second);
+                System.Console.WriteLine(nums.Third);
+                System.Console.WriteLine(nums.Fourth);
+                System.Console.WriteLine(nums.Fifth);
 
-                if (counter == 0)
-                {
-                    slist.Add("Element " + (counter + 1) + ": List too small.");
-                }
-                else
-                {
-                    slist.Add("Element " + (counter + 1) + ": Current standard deviation is: " + standev);
-                }
-
-                counter++;
             }
 
-            Console.WriteLine("Standard Deviation = " + standev);
-
-            return Accepted(slist);
+            return Accepted(input);
         }
 
-        // Function for calculating standard deviation of an int list parameter
-        static double standardDeviation(IEnumerable<int> sequence)
-        {
-            double result = 0;
+        // LogObject(NumList input);
 
-            if (sequence.Any())
-            {
-                double average = sequence.Average();
-                double sum = sequence.Sum(d => Math.Pow(d - average, 2));
-                result = Math.Sqrt((sum) / (sequence.Count() - 1));
-            }
-            
-            // pointless comment
-            return result;
-        }
+
+        //public void LogObject(NumList input)
+        //{
+
+        //}
+
+    }
+
+    public class NumList
+    {
+        public int First { get; set; }
+        public int Second { get; set; }
+        public int Third { get; set; }
+        public int Fourth { get; set; }
+        public int Fifth { get; set; }
+
     }
 }
+
+
+// string[] result = greetings.Cast<string>().ToArray();
+// int[] result = obj.Cast<int>().ToArray();
