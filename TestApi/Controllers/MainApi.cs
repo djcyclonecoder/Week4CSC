@@ -22,12 +22,18 @@ namespace TestApi.Controllers
                 System.Console.WriteLine(nums.Fourth);
                 System.Console.WriteLine(nums.Fifth);
 
-
-
             }
 
             return Accepted(input);
         }
+
+        // LogObject(NumList input);
+
+
+        //public void LogObject(NumList input)
+        //{
+
+        //}
 
     }
 
