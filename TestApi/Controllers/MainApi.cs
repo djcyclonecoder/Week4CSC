@@ -59,6 +59,8 @@ namespace TestApi.Controllers
                 double sum = sequence.Sum(d => Math.Pow(d - average, 2));
                 result = Math.Sqrt((sum) / (sequence.Count() - 1));
             }
+            
+            // pointless comment
             return result;
         }
     }
